@@ -4,7 +4,7 @@
 デプロイ先がAWS EC2インスタンスの場合は、最低`t2.small`以上のインスタンスにしてください  
 t2.microだとメモリ不足でフリーズします
 
-## 準備
+## 実行
 
 すでに手元でansibleが実行できる場合は、手順7を実行してください
 
@@ -17,3 +17,7 @@ t2.microだとメモリ不足でフリーズします
 5. `docker-compose up --build -d`でAnsible実行コンテナを起動
 6. `docker exec -it awx-ansible /bin/bash`でコンテナにログイン
 7. `ansible-playbook -i /ansible/inventories/hosts /ansible/awx.yml`でインストール
+
+## Web UI
+
+デフォルトUSERNAME/PASSWORDは`admin`/`password`です
