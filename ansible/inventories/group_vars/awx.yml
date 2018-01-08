@@ -1,0 +1,6 @@
+---
+awx:
+  tz: "Asia/Tokyo"
+  # work_dirと変更
+  work_user: "ec2-user"
+  work_dir: "/home/ec2-user/awx"

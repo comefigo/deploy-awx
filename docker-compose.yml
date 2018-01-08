@@ -1,0 +1,13 @@
+version: "3.2"
+services:
+  awx-ansible:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: awx-ansible
+    container_name: awx-ansible
+    hostname: awx-ansible
+    volumes:
+      - ./ansible:/ansible
+    env_file: 
+      - common.env

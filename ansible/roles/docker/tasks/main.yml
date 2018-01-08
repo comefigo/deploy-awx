@@ -1,0 +1,27 @@
+---
+- name: update to latest packages, excluding kernel.
+  yum:
+    name: "*"
+    state: latest
+    exclude: kernel*
+  become: yes
+
+- name: install docker
+  yum:
+    name: docker
+    state: present
+  become: yes
+
+- name: start docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+- name: "add {{ awx.work_user }} into Docker group"
+  user:
+    name: "{{ awx.work_user }}"
+    groups:
+      - docker
+  become: yes

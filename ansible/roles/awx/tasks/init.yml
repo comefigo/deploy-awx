@@ -1,0 +1,25 @@
+---
+- name: set timezone
+  timezone:
+    name: "{{ awx.tz }}"
+  become: yes
+
+- name: create work dir
+  file:
+    dest: "{{ awx.work_dir }}"
+    state: directory
+
+- name: install git, ansible with epel repo
+  yum:
+    name: "{{ item }}"
+    enablerepo: epel
+    state: present
+  with_items:
+    - git
+    - ansible
+  become: yes
+
+- name: check out git resource
+  git:
+    repo: https://github.com/ansible/awx.git
+    dest: "{{ awx.work_dir }}"
