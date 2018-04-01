@@ -19,7 +19,27 @@
     - ansible
   become: yes
 
+# AWXのソースをチェックアウト
 - name: check out git resource
   git:
     repo: https://github.com/ansible/awx.git
     dest: "{{ awx.work_dir }}"
+
+# AWX DB Data保存用のディレクトリを作成
+- name: create awx postgresql data dir
+  file:
+    dest: "{{ awx.work_dir }}/{{ awx.pg.data_dir }}"
+    state: directory
+
+# AWXインストール時にインベントリ変数を上書きするためのgroup_varsフォルダを作成
+- name: create group_vars dir
+  file:
+    dest: "{{ awx.work_dir }}/installer/group_vars"
+    state: directory
+
+# AWXインストール用の変数を展開
+- name: overwrite awx inventory variable
+  template:
+    src: all.j2.yml
+    dest: "{{ awx.work_dir }}/installer/group_vars/all.yml"
+    mode: u=rw,g=r,o=

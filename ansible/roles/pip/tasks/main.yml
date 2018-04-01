@@ -5,21 +5,11 @@
     state: present
   become: yes
 
-- name: install pip
-  yum:
-    name: python-pip
-    state: present
-  become: yes
-
-- name: update pip
-  pip:
-    name: pip
-    extra_args: --upgrade
-    state: present
-  become: yes
-
 - name: install docker-py
   pip:
-    name: docker
+    name: "{{ item }}"
     state: present
+  with_items:
+    - "docker"
+    - "docker-py"
   become: yes

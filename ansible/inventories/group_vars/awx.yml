@@ -1,6 +1,15 @@
 ---
 awx:
   tz: "Asia/Tokyo"
-  # work_dirと変更
   work_user: "ec2-user"
   work_dir: "/home/ec2-user/awx"
+  # 認証鍵を暗号化するための鍵
+  secret_key: "XOVUutEJr1yGg2HK"
+  web:
+    username: "admin"
+    password: "iryKdFVqWtNZXTNK"
+    port: 80
+  pg:
+    data_dir: "awx_pg_data"
+    username: "aws"
+    password: "awxpass"

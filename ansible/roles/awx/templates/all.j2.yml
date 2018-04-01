@@ -1,0 +1,10 @@
+---
+# installer用インベントリ変数を上書きする
+# https://github.com/ansible/awx/blob/devel/installer/inventory
+postgres_data_dir: {{ awx.work_dir }}/{{ awx.pg.data_dir }}
+host_port: {{ awx.web.port }}
+pg_username: {{ awx.pg.username }}
+pg_password: {{ awx.pg.password }}
+awx_secret_key: {{ awx.secret_key }}
+default_admin_user: {{ awx.web.username }}
+default_admin_password: {{ awx.web.password }}
