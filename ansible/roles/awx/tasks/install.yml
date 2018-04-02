@@ -2,4 +2,4 @@
 - name: execute installer
   command: ansible-playbook -i inventory install.yml
   args:
-    chdir: "{{ awx.work_dir }}/installer"
+    chdir: "{{ awx.work_dir }}/src/installer"
