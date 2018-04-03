@@ -6,6 +6,7 @@ awx:
   # AWXに登録した認証鍵を暗号化するための鍵
   secret_key: "XOVUutEJr1yGg2HK"
   project_dir: "project"
+  version: "1.0.5"
   web:
     username: "admin"
     password: "iryKdFVqWtNZXTNK"

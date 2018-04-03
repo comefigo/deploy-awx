@@ -29,11 +29,19 @@
   git:
     repo: https://github.com/ansible/awx.git
     dest: "{{ awx.work_dir }}/src"
+    accept_hostkey: yes
+    version: "{{ awx.version }}"
 
 # AWX DB Data保存用のディレクトリを作成
 - name: create awx postgresql data dir
   file:
     dest: "{{ awx.work_dir }}/{{ awx.pg.data_dir }}"
+    state: directory
+
+# AWX プロジェクトフォルダ用のディレクトリを作成
+- name: create awx project data dir
+  file:
+    dest: "{{ awx.work_dir }}/{{ awx.project_dir }}"
     state: directory
 
 # AWXインストール時にインベントリ変数を上書きするためのgroup_varsフォルダを作成
