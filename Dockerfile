@@ -12,7 +12,7 @@ RUN pip install --upgrade pip \
     && pip install boto boto3 awscli ansible
 
 # add ansible config
-ADD ./ansible/configs/ansible.cfg /root/.ansible.cfg
+ADD ./ansible.cfg /root/.ansible.cfg
 
 # install initscripts for user /sbin/init
 RUN yum install -y initscripts
